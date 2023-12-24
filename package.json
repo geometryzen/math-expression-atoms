@@ -1,7 +1,7 @@
 {
-    "name": "@geometryzen/my-lib",
+    "name": "math-expression-atoms",
     "version": "0.9.5",
-    "description": "My Library",
+    "description": "Atoms for constructing math expressions",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
@@ -44,7 +44,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/geometryzen/my-lib.git"
+        "url": "git+https://github.com/geometryzen/math-expression-atoms.git"
     },
     "author": {
         "name": "David Geo Holmes",
@@ -52,9 +52,9 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/geometryzen/my-lib/issues"
+        "url": "https://github.com/geometryzen/math-expression-atoms/issues"
     },
-    "homepage": "https://github.com/geometryzen/my-lib#readme",
+    "homepage": "https://github.com/geometryzen/math-expression-atoms#readme",
     "devDependencies": {
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
