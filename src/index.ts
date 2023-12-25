@@ -5,7 +5,7 @@ export { Num } from './num/Num';
 export { BigInteger } from './rat/big-integer';
 export { assert_rat, create_int, create_rat, is_rat, Rat } from './rat/Rat';
 export { assert_str, emptyStr, is_str, Str } from './str/Str';
-export { create_sym_legacy, is_sym, Sym } from './sym/Sym';
+export { create_sym, create_sym_legacy, is_sym, Sym } from './sym/Sym';
 export { is_tensor, Tensor } from './tensor/Tensor';
 
 
