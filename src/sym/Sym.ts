@@ -33,22 +33,6 @@ export function create_sym(printname: string, pos?: number, end?: number): Sym {
     return sym;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function create_sym_legacy(printname: string, func: (expr: Cons, $: any) => void) {
-    const cached = cache.get(printname);
-    if (cached) {
-        // We can get a race condition between the systems that do and don't store func on the Sym.
-        // Resolve the issue by fixing up the func
-        if (typeof func === 'function' && cached.func !== func) {
-            cached.func = func;
-        }
-        return cached;
-    }
-    const sym = new Sym(printname, func);
-    cache.set(printname, sym);
-    return sym;
-}
-
 export class Sym extends Atom<'Sym'> {
     readonly #text: string;
     func: (expr: Cons, $: unknown) => void;
