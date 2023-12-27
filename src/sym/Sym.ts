@@ -13,7 +13,6 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     }
 }
 
-const secretToEnforceUsingCreateSym: number = Math.random();
 /**
  * A map of printname to symbol.
  */
@@ -29,7 +28,7 @@ export function create_sym(printname: string, pos?: number, end?: number): Sym {
     if (cached) {
         return cached;
     }
-    const sym = new Sym(secretToEnforceUsingCreateSym, printname, NOOP, pos, end);
+    const sym = new Sym(printname, NOOP, pos, end);
     cache.set(printname, sym);
     return sym;
 }
@@ -45,7 +44,7 @@ export function create_sym_legacy(printname: string, func: (expr: Cons, $: any) 
         }
         return cached;
     }
-    const sym = new Sym(secretToEnforceUsingCreateSym, printname, func);
+    const sym = new Sym(printname, func);
     cache.set(printname, sym);
     return sym;
 }
@@ -56,13 +55,10 @@ export class Sym extends Atom<'Sym'> {
     /**
      * Use create_sym to create a new Sym instance.
      */
-    constructor(secret: number, text: string, func: (expr: Cons, $: unknown) => void, pos?: number, end?: number) {
+    constructor(text: string, func: (expr: Cons, $: unknown) => void, pos?: number, end?: number) {
         super('Sym', pos, end);
         this.#text = text;
         this.func = func;
-        if (secret !== secretToEnforceUsingCreateSym) {
-            throw new Error("Sym instances must be created using the create_sym function.");
-        }
     }
     compare(other: Sym): 1 | -1 | 0 {
         // console.lg("compare", "this", this.ln, "other", other.ln);
