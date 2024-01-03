@@ -11,5 +11,9 @@ export { is_tensor, Tensor } from './tensor/Tensor';
 export { Dimensions } from './uom/Dimensions';
 export { QQ } from './uom/QQ';
 export { is_uom, Uom } from './uom/Uom';
+export { Adapter, SumTerm } from './vec/Adapter';
+export { Algebra, BasisBlade, MaskAndWeight, Metric } from './vec/BasisBlade';
+export { Blade } from './vec/Blade';
+export { create_algebra, is_blade } from './vec/createAlgebra';
 
 

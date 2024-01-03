@@ -214,10 +214,6 @@ export class QQ {
         return "" + this.#numer + "/" + this.#denom + "";
     }
 
-    /**
-     * @param rhs
-     * @returns
-     */
     __add__(rhs: QQ): QQ | undefined {
         if (rhs instanceof QQ) {
             return this.add(rhs);
@@ -227,10 +223,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param lhs
-     * @returns
-     */
     __radd__(lhs: QQ): QQ | undefined {
         if (lhs instanceof QQ) {
             return lhs.add(this);
@@ -240,10 +232,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param rhs
-     * @returns
-     */
     __sub__(rhs: QQ): QQ | undefined {
         if (rhs instanceof QQ) {
             return this.sub(rhs);
@@ -253,10 +241,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param lhs
-     * @returns
-     */
     __rsub__(lhs: QQ): QQ | undefined {
         if (lhs instanceof QQ) {
             return lhs.sub(this);
@@ -266,10 +250,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param rhs
-     * @returns
-     */
     __mul__(rhs: QQ): QQ | undefined {
         if (rhs instanceof QQ) {
             return this.mul(rhs);
@@ -279,10 +259,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param lhs
-     * @returns
-     */
     __rmul__(lhs: QQ): QQ | undefined {
         if (lhs instanceof QQ) {
             return lhs.mul(this);
@@ -292,10 +268,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param div
-     * @returns
-     */
     __div__(rhs: QQ): QQ | undefined {
         if (rhs instanceof QQ) {
             return this.div(rhs);
@@ -305,10 +277,6 @@ export class QQ {
         }
     }
 
-    /**
-     * @param lhs
-     * @returns
-     */
     __rdiv__(lhs: QQ): QQ | undefined {
         if (lhs instanceof QQ) {
             return lhs.div(this);
@@ -318,16 +286,10 @@ export class QQ {
         }
     }
 
-    /**
-     * @returns
-     */
     __pos__(): QQ {
         return this;
     }
 
-    /**
-     * @returns
-     */
     __neg__(): QQ {
         return this.neg();
     }
@@ -356,11 +318,6 @@ export class QQ {
 
     private static POS_02_03: QQ = new QQ(2, 3, magicCode);
 
-    /**
-     * @param numer
-     * @param denom
-     * @returns
-     */
     static valueOf(n: number, d: number): QQ {
         if (n === 0) {
             if (d !== 0) {
