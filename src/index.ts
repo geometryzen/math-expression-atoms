@@ -8,5 +8,8 @@ export { assert_str, emptyStr, is_str, Str } from './str/Str';
 export { create_sym, is_sym, Sym } from './sym/Sym';
 export { create_tensor_elements, create_tensor_elements_diagonal, create_tensor_elements_zero } from './tensor/create_tensor_elements';
 export { is_tensor, Tensor } from './tensor/Tensor';
+export { Dimensions } from './uom/Dimensions';
+export { QQ } from './uom/QQ';
+export { is_uom, Uom } from './uom/Uom';
 
 
