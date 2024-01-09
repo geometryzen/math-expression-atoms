@@ -6,7 +6,7 @@ import { Atom } from "../atom/Atom";
  * By escaping here, this class gets written into expression correctly.
  * As it works now, if we escape here then tests break because of double-duty escaping.
  */
-export class Str extends Atom<'Str'> {
+export class Str extends Atom {
     /**
      * @param str The parsed representation of the string. i.e. Delimiters and escaping have been removed.
      * @param pos The zero-based start position of the original text.
@@ -15,7 +15,7 @@ export class Str extends Atom<'Str'> {
     constructor(public readonly str: string, pos?: number, end?: number) {
         super('Str', pos, end);
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (other instanceof Str) {
             return this.equalsStr(other);
         }
@@ -33,7 +33,7 @@ export class Str extends Atom<'Str'> {
     toListString(): string {
         return JSON.stringify(this.str);
     }
-    toString(): string {
+    override toString(): string {
         return `${this.name}(${this.str})`;
     }
 }

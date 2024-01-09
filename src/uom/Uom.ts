@@ -158,7 +158,7 @@ function div(lhs: Uom, rhs: Uom): Uom {
 /**
  * The Uom class represents the units for a measure.
  */
-export class Uom extends Atom<'Uom'> {
+export class Uom extends Atom {
 
     /**
      *
@@ -235,7 +235,7 @@ export class Uom extends Atom<'Uom'> {
         }
     }
 
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (other instanceof Uom) {
             return this.dimensions.equals(other.dimensions);
         }
@@ -405,7 +405,7 @@ export class Uom extends Atom<'Uom'> {
      * @param compact Determines whether a multiplier of unity will be included in the result.
      * @returns
      */
-    toString(radix?: number, compact?: boolean): string {
+    override toString(radix?: number, compact?: boolean): string {
         return unitString(Number(1).toString(radix), this.dimensions, this.labels, compact);
     }
 

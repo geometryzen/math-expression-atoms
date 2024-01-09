@@ -30,7 +30,7 @@ export function create_flt(value: number, pos?: number, end?: number): Flt {
     return new Flt(value, pos, end);
 }
 
-export class Flt extends Atom<'Flt'> {
+export class Flt extends Atom {
     /**
      * Use the factory method instead. This may not exist in future.
      */
@@ -52,7 +52,7 @@ export class Flt extends Atom<'Flt'> {
         }
         return 0;
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (this === other) {
             return true;
         }
@@ -108,7 +108,7 @@ export class Flt extends Atom<'Flt'> {
     toNumber(): number {
         return this.d;
     }
-    toString(): string {
+    override toString(): string {
         return `${this.name}(${this.d})`;
     }
 }

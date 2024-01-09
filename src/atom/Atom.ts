@@ -1,21 +1,27 @@
 import { U } from "math-expression-tree";
 
-export abstract class Atom<NAME extends string> implements U {
-    constructor(public readonly name: NAME, public readonly pos?: number, public readonly end?: number) {
+export abstract class Atom implements U {
+    constructor(public readonly name: string, public readonly pos?: number, public readonly end?: number) {
 
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     contains(needle: U): boolean {
         return this.equals(needle);
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     equals(other: U): boolean {
-        throw new Error(`Atom(name=${this.name}).equals(other=${other}) Method not implemented.`);
+        if (this === other) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     isCons(): boolean {
         return false;
     }
     isNil(): boolean {
         return false;
+    }
+    toString(): string {
+        return this.name;
     }
 }

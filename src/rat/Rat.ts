@@ -99,7 +99,7 @@ function abs(a: BigInteger): BigInteger {
 /**
  * "God gave us the integers, all else is the work of man" - Kronecker.
  */
-export class Rat extends Atom<'Rat'> {
+export class Rat extends Atom {
     /**
      * @param a The numerator.
      * @param b The denominator.
@@ -161,7 +161,7 @@ export class Rat extends Atom<'Rat'> {
         const c = makeSignSameAs(gcdAABB, bb);
         return new Rat(mdiv(aa, c), mdiv(bb, c));
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (other instanceof Rat) {
             return this.equalsRat(other);
         }
@@ -280,7 +280,7 @@ export class Rat extends Atom<'Rat'> {
         const divmod = this.a.divmod(this.b);
         return divmod.quotient.toJSNumber() + divmod.remainder.toJSNumber() / this.b.toJSNumber();
     }
-    toString(): string {
+    override toString(): string {
         const numerString = this.a.toString();
         if (this.isFraction()) {
             const denomString = this.b.toString();

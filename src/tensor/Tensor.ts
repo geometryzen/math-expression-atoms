@@ -35,7 +35,7 @@ function equals_U_arrays(arrL: U[], arrR: U[]): boolean {
  * the elements of the tensor are stored in a flattened manner. Presumambly,
  * this makes things easier in the case when a Tensor is used as a square matrix.
  */
-export class Tensor<T extends U = U> extends Atom<'Tensor'> {
+export class Tensor<T extends U = U> extends Atom {
     readonly #dims: number[];
     readonly #elems: T[];
     /**
@@ -101,7 +101,7 @@ export class Tensor<T extends U = U> extends Atom<'Tensor'> {
     elem(index: number): T {
         return this.#elems[index];
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (other instanceof Tensor) {
             if (equals_number_arrays(this.#dims, other.#dims)) {
                 if (equals_U_arrays(this.#elems, other.#elems)) {
@@ -155,7 +155,7 @@ export class Tensor<T extends U = U> extends Atom<'Tensor'> {
     toListString(): string {
         return '<tensor>';
     }
-    toString(): string {
+    override toString(): string {
         return `${this.name}(dims=[${this.#dims}], elems=[${this.#elems.map(function (elem) {
             return `${elem}`;
         }).join(',')}])`;

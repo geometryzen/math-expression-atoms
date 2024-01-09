@@ -4,11 +4,11 @@ import { Atom } from "../atom/Atom";
 /**
  * Fuzzy Logical Boolean.
  */
-export class Boo extends Atom<'Boo'> {
+export class Boo extends Atom {
     constructor(private readonly b: boolean | undefined, pos?: number, end?: number) {
         super('Boo', pos, end);
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (this === other) {
             return true;
         }
@@ -38,7 +38,7 @@ export class Boo extends Atom<'Boo'> {
             return false;
         }
     }
-    toString(): string {
+    override toString(): string {
         if (typeof this.b === 'boolean') {
             return this.b ? `${this.name}(true)` : `${this.name}(false)`;
         }

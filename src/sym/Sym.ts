@@ -1,4 +1,4 @@
-import { Cons, U } from "math-expression-tree";
+import { U } from "math-expression-tree";
 import { Atom } from "../atom/Atom";
 
 function strcmp(str1: string, str2: string): 0 | 1 | -1 {
@@ -33,13 +33,13 @@ export function create_sym(printname: string, pos?: number, end?: number): Sym {
     return sym;
 }
 
-export class Sym extends Atom<'Sym'> {
+export class Sym extends Atom {
     readonly #text: string;
-    func: (expr: Cons, $: unknown) => void;
+    func: (expr: U, $: unknown) => void;
     /**
      * Use create_sym to create a new Sym instance.
      */
-    constructor(text: string, func: (expr: Cons, $: unknown) => void, pos?: number, end?: number) {
+    constructor(text: string, func: (expr: U, $: unknown) => void, pos?: number, end?: number) {
         super('Sym', pos, end);
         this.#text = text;
         this.func = func;
@@ -63,7 +63,7 @@ export class Sym extends Atom<'Sym'> {
     clone(pos: number | undefined, end: number | undefined): Sym {
         return create_sym(this.#text, pos, end);
     }
-    equals(other: U): boolean {
+    override equals(other: U): boolean {
         if (other instanceof Sym) {
             return this.equalsSym(other);
         }
@@ -86,7 +86,7 @@ export class Sym extends Atom<'Sym'> {
     get text(): string {
         return this.#text;
     }
-    toString(): string {
+    override toString(): string {
         return this.#text;
     }
 }
