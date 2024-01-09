@@ -540,3 +540,13 @@ export class Uom extends Atom {
 export function is_uom(expr: U): expr is Uom {
     return expr instanceof Uom;
 }
+
+export function assert_uom(expr: U): Uom {
+    if (is_uom(expr)) {
+        return expr;
+    }
+    else {
+        // Don't need anything fancy here because this is an assertion for dev eyes only.
+        throw new Error(`Expecting a Uom but got expression ${expr}.`);
+    }
+}

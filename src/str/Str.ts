@@ -51,4 +51,5 @@ export function assert_str(expr: U): Str {
         throw new Error(`Expecting a Str but got expression ${expr}.`);
     }
 }
+
 export const emptyStr = new Str('');

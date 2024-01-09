@@ -38,6 +38,16 @@ export function is_blade<T, K>(arg: unknown): arg is Blade {
     }
 }
 
+export function assert_blade(expr: U): Blade {
+    if (is_blade(expr)) {
+        return expr;
+    }
+    else {
+        // Don't need anything fancy here because this is an assertion for dev eyes only.
+        throw new Error(`Expecting a Blade but got expression ${expr}.`);
+    }
+}
+
 function is_metric<T>(arg: unknown): arg is Metric<T> {
     const duck = arg as Metric<T>;
     return typeof duck.getEigenMetric === 'function';

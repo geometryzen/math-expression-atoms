@@ -1,5 +1,6 @@
-import { Flt } from "../flt/Flt";
-import { Rat } from "../rat/Rat";
+import { U } from "math-expression-tree";
+import { Flt, is_flt } from "../flt/Flt";
+import { is_rat, Rat } from "../rat/Rat";
 
 /**
  * The Num type is the union of Flt and Rat (and maybe Int in future).
@@ -8,3 +9,17 @@ import { Rat } from "../rat/Rat";
  * combined entity so that simlifications can be performed.
  */
 export type Num = Flt | Rat;
+
+export function is_num(expr: U): expr is Num {
+    return is_flt(expr) || is_rat(expr);
+}
+
+export function assert_num(expr: U): Num {
+    if (is_num(expr)) {
+        return expr;
+    }
+    else {
+        throw new Error(`Expecting a Num but got expression ${expr}.`);
+    }
+}
+

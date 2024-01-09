@@ -172,3 +172,13 @@ export class Tensor<T extends U = U> extends Atom {
 export function is_tensor(p: U): p is Tensor {
     return p instanceof Tensor;
 }
+
+export function assert_tensor(expr: U): Tensor {
+    if (is_tensor(expr)) {
+        return expr;
+    }
+    else {
+        throw new Error(`Expecting a Tensor but got expression ${expr}.`);
+    }
+}
+

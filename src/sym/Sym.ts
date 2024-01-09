@@ -94,3 +94,13 @@ export class Sym extends Atom {
 export function is_sym(expr: U): expr is Sym {
     return expr instanceof Sym;
 }
+
+export function assert_sym(expr: U): Sym {
+    if (is_sym(expr)) {
+        return expr;
+    }
+    else {
+        // Don't need anything fancy here because this is an assertion for dev eyes only.
+        throw new Error(`Expecting a Sym but got expression ${expr}.`);
+    }
+}
