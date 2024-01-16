@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
 
 export abstract class Atom implements U {
-    constructor(public readonly name: string, public pos?: number, public end?: number) {
+    constructor(public readonly name: string, public readonly pos?: number, public readonly end?: number) {
 
     }
     contains(needle: U): boolean {

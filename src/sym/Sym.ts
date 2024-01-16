@@ -13,42 +13,18 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     }
 }
 
-/**
- * A map of printname to symbol.
- */
-// const cache: Map<string, Sym> = new Map();
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const NOOP = (expr: U) => {
-    return;
-};
-
 export function create_sym(printname: string, pos?: number, end?: number): Sym {
-    /*
-    const cached: Sym = cache.get(printname);
-    if (cached) {
-        if (typeof pos === 'number' && typeof end === 'number') {
-            cached.pos = pos;
-            cached.end = end;
-        }
-        return cached;
-    }
-    */
-    const sym = new Sym(printname, NOOP, pos, end);
-    // cache.set(printname, sym);
-    return sym;
+    return new Sym(printname, pos, end);
 }
 
 export class Sym extends Atom {
     readonly #text: string;
-    func: (expr: U, $: unknown) => void;
     /**
      * Use create_sym to create a new Sym instance.
      */
-    constructor(text: string, func: (expr: U, $: unknown) => void, pos?: number, end?: number) {
+    constructor(text: string, readonly pos?: number, readonly end?: number) {
         super('Sym', pos, end);
         this.#text = text;
-        this.func = func;
     }
     compare(other: Sym): 1 | -1 | 0 {
         // console.lg("compare", "this", this.ln, "other", other.ln);
