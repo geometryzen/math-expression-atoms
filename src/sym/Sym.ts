@@ -24,8 +24,12 @@ const NOOP = (expr: U) => {
 };
 
 export function create_sym(printname: string, pos?: number, end?: number): Sym {
-    const cached = cache.get(printname);
+    const cached: Sym = cache.get(printname);
     if (cached) {
+        if (typeof pos === 'number' && typeof end === 'number') {
+            cached.pos = pos;
+            cached.end = end;
+        }
         return cached;
     }
     const sym = new Sym(printname, NOOP, pos, end);
