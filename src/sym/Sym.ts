@@ -16,7 +16,7 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
 /**
  * A map of printname to symbol.
  */
-const cache: Map<string, Sym> = new Map();
+// const cache: Map<string, Sym> = new Map();
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const NOOP = (expr: U) => {
@@ -24,6 +24,7 @@ const NOOP = (expr: U) => {
 };
 
 export function create_sym(printname: string, pos?: number, end?: number): Sym {
+    /*
     const cached: Sym = cache.get(printname);
     if (cached) {
         if (typeof pos === 'number' && typeof end === 'number') {
@@ -32,8 +33,9 @@ export function create_sym(printname: string, pos?: number, end?: number): Sym {
         }
         return cached;
     }
+    */
     const sym = new Sym(printname, NOOP, pos, end);
-    cache.set(printname, sym);
+    // cache.set(printname, sym);
     return sym;
 }
 
