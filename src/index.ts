@@ -5,7 +5,7 @@ export { assert_num, is_num, Num } from './num/Num';
 export { bigInt, BigInteger, gcd } from './rat/big-integer';
 export { assert_rat, create_int, create_rat, is_rat, negOne, one, Rat, zero } from './rat/Rat';
 export { assert_str, emptyStr, is_str, Str } from './str/Str';
-export { assert_sym, create_sym, is_sym, Sym } from './sym/Sym';
+export { assert_sym, create_sym, create_sym_ns, is_sym, Sym } from './sym/Sym';
 export { create_tensor_elements, create_tensor_elements_diagonal, create_tensor_elements_zero } from './tensor/create_tensor_elements';
 export { assert_tensor, is_tensor, Tensor } from './tensor/Tensor';
 export { Dimensions } from './uom/Dimensions';
