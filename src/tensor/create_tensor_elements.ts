@@ -2,9 +2,9 @@ import { U } from "math-expression-tree";
 import { zero } from "../rat/Rat";
 import { Tensor } from "./Tensor";
 
-export function create_tensor_elements_zero(dims: number[], nelem: number): Tensor<U> {
+export function create_tensor_elements_zero(dims: number[], nelem: number, pos?: number, end?: number): Tensor<U> {
     const elems = create_tensor_elements(nelem, zero);
-    return new Tensor<U>(dims, elems);
+    return new Tensor<U>(dims, elems, pos, end);
 }
 
 /**

@@ -165,7 +165,7 @@ export class Tensor<T extends U = U> extends Atom {
      * This element avoids the copy of the dims array.
      */
     withElements<X extends U>(elems: X[]): Tensor<X> {
-        return new Tensor(this.#dims, elems);
+        return new Tensor(this.#dims, elems, this.pos, this.end);
     }
 }
 
