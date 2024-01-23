@@ -89,7 +89,7 @@ export class Sym extends Atom {
     }
     key(): string {
         if (this.#namespace.length > 0) {
-            return `:${this.#namespace}/${this.#localName}`;
+            return `${this.#namespace}/${this.#localName}`;
         }
         else {
             return this.#localName;

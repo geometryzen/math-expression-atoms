@@ -7,7 +7,7 @@ test("Construction", function () {
     const sym: Sym = create_sym_ns('foo', 'explicit-ns', pos, end);
     expect(sym.localName).toBe('foo');
     expect(sym.namespace).toBe('explicit-ns');
-    expect(sym.key()).toBe(':explicit-ns/foo');
+    expect(sym.key()).toBe('explicit-ns/foo');
     expect(sym.toString()).toBe('Sym("foo", "explicit-ns")');
     expect(sym.pos).toBe(pos);
     expect(sym.end).toBe(end);
@@ -31,14 +31,14 @@ test("Sym.clone(pos?: number, end?: number): Sym", function () {
     const end = 10;
     const a: Sym = create_sym_ns('foo', 'explicit-ns', pos, end);
     const b = a.clone();
-    expect(a.key()).toBe(':explicit-ns/foo');
-    expect(b.key()).toBe(':explicit-ns/foo');
+    expect(a.key()).toBe('explicit-ns/foo');
+    expect(b.key()).toBe('explicit-ns/foo');
     expect(b.equals(a)).toBe(true);
     expect(a.pos).toBe(b.pos);
     expect(a.end).toBe(b.end);
 
     const c = a.clone(7, 11);
-    expect(c.key()).toBe(':explicit-ns/foo');
+    expect(c.key()).toBe('explicit-ns/foo');
     expect(c.equals(a)).toBe(true);
     expect(c.pos).toBe(7);
     expect(c.end).toBe(11);
