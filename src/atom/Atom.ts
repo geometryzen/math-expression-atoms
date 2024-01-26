@@ -4,6 +4,10 @@ export abstract class Atom implements U {
     constructor(public readonly name: string, public readonly pos?: number, public readonly end?: number) {
 
     }
+    addRef(): void {
+    }
+    release(): void {
+    }
     contains(needle: U): boolean {
         return this.equals(needle);
     }
@@ -22,6 +26,7 @@ export abstract class Atom implements U {
         return false;
     }
     toString(): string {
+        // TODO: This probably should be abstract or left undefined?
         return this.name;
     }
 }

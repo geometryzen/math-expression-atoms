@@ -248,6 +248,12 @@ export function create_blade<T extends U, K extends U>(bitmap: number, algebra: 
         }
     };
     const theBlade: BasisBlade<T, K> = {
+        addRef(): void {
+            // Nothing to see here.
+        },
+        release(): void {
+            // Nothing to see here.
+        },
         get bitmap(): number {
             return bitmap;
         },

@@ -1,6 +1,8 @@
 import { U } from "math-expression-tree";
 import { Atom } from "../atom/Atom";
 
+const CLASSNAME = 'Tag';
+
 export class Tag extends Atom {
     constructor(readonly tag: string, readonly value: U, pos?: number, end?: number) {
         super('Tag', pos, end);
@@ -9,7 +11,7 @@ export class Tag extends Atom {
         }
     }
     toString(): string {
-        throw new Error();
+        return `${CLASSNAME}(${JSON.stringify(this.tag)})`;
     }
 }
 
