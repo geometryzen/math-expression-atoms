@@ -2,6 +2,10 @@ import { U } from "math-expression-tree";
 import { assert_boo, Boo, booF, booT, booU, create_boo, is_boo } from "../src/index";
 
 class BogusAtom implements U {
+    addRef(): void {
+    }
+    release(): void {
+    }
     name: string;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     contains(needle: U): boolean {
