@@ -1,12 +1,14 @@
 import { U } from "math-expression-tree";
 import { Atom } from "../atom/Atom";
 
+const CLASSNAME = "Boo";
+
 /**
  * Fuzzy Logical Boolean.
  */
 export class Boo extends Atom {
     constructor(private readonly b: boolean | undefined, pos?: number, end?: number) {
-        super('Boo', pos, end);
+        super('boolean', pos, end);
     }
     override equals(other: U): boolean {
         if (this === other) {
@@ -40,10 +42,10 @@ export class Boo extends Atom {
     }
     override toString(): string {
         if (typeof this.b === 'boolean') {
-            return this.b ? `${this.name}(true)` : `${this.name}(false)`;
+            return this.b ? `${CLASSNAME}(true)` : `${CLASSNAME}(false)`;
         }
         else {
-            return `${this.name}(undefined)`;
+            return `${CLASSNAME}(undefined)`;
         }
     }
     static valueOf(b: boolean | undefined): Boo {

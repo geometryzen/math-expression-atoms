@@ -1,11 +1,8 @@
 import { U } from "math-expression-tree";
 import { Atom } from "../atom/Atom";
 
-/**
- * TODO: This class SHOULD (MUST) be escaping the string and the printer SHOULD NOT not then need to escape.
- * By escaping here, this class gets written into expression correctly.
- * As it works now, if we escape here then tests break because of double-duty escaping.
- */
+const CLASSNAME = "JsString";
+
 export class Str extends Atom {
     /**
      * @param str The parsed representation of the string. i.e. Delimiters and escaping have been removed.
@@ -13,7 +10,7 @@ export class Str extends Atom {
      * @param end The zero-based end position of the original text.
      */
     constructor(public readonly str: string, pos?: number, end?: number) {
-        super('Str', pos, end);
+        super('string', pos, end);
     }
     override equals(other: U): boolean {
         if (other instanceof Str) {
@@ -34,7 +31,7 @@ export class Str extends Atom {
         return JSON.stringify(this.str);
     }
     override toString(): string {
-        return `${this.name}(${this.str})`;
+        return `${CLASSNAME}(${JSON.stringify(this.str)})`;
     }
 }
 

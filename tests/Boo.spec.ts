@@ -23,7 +23,6 @@ class BogusAtom implements U {
     }
     pos?: number;
     end?: number;
-
 }
 
 test("ceate_boo", function () {
