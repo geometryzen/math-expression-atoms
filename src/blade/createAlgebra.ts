@@ -266,10 +266,10 @@ export function create_blade<T extends U, K extends U>(bitmap: number, algebra: 
         sub(rhs: BasisBlade<T, K>): K {
             return sub(theBlade, rhs, algebra, metric, labels) as K;
         },
-        iscons(): boolean {
+        get iscons(): boolean {
             return false;
         },
-        isnil(): boolean {
+        get isnil(): boolean {
             return false;
         },
         mul(rhs: BasisBlade<T, K>): K {

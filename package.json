@@ -85,6 +85,6 @@
         "typescript": "^5.3.3"
     },
     "peerDependencies": {
-        "math-expression-tree": "^0.9.19"
+        "math-expression-tree": "^0.9.20"
     }
 }

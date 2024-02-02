@@ -15,10 +15,10 @@ class BogusAtom implements U {
     equals(other: U): boolean {
         throw new Error("Method not implemented.");
     }
-    iscons(): boolean {
+    get iscons(): boolean {
         throw new Error("Method not implemented.");
     }
-    isnil(): boolean {
+    get isnil(): boolean {
         throw new Error("Method not implemented.");
     }
     pos?: number;
@@ -33,8 +33,8 @@ test("new Str(str, pos, end)", function () {
     expect(s.pos).toBe(5);
     expect(s.end).toBe(23);
     expect(s.name).toBe("string");
-    expect(s.iscons()).toBe(false);
-    expect(s.isnil()).toBe(false);
+    expect(s.iscons).toBe(false);
+    expect(s.isnil).toBe(false);
 });
 
 test("equalsStr", function () {
