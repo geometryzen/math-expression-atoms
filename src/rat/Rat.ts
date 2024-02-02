@@ -327,7 +327,7 @@ export function create_int(n: number, pos?: number, end?: number): Rat {
     }
 }
 
-export function create_rat(numer: number, denom: number, pos?: number, end?: number): Rat {
+export function create_rat(numer: number, denom: number = 1, pos?: number, end?: number): Rat {
     // console.lg("wrap_as_rat", numer, denom);
     return new Rat(bigInt(numer), bigInt(denom), pos, end);
 }
