@@ -19,10 +19,10 @@ export abstract class Atom implements U {
             return false;
         }
     }
-    isCons(): boolean {
+    iscons(): boolean {
         return false;
     }
-    isNil(): boolean {
+    isnil(): boolean {
         return false;
     }
     toString(): string {

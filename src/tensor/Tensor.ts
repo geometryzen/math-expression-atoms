@@ -128,15 +128,6 @@ export class Tensor<T extends U = U> extends Atom {
     mapElements<X>(callbackfn: (value: T, index: number, array: T[]) => X): X[] {
         return this.#elems.map(callbackfn);
     }
-    isCons(): boolean {
-        return false;
-    }
-    /**
-     * @override
-     */
-    isNil(): boolean {
-        return false;
-    }
     sameDimensions(other: Tensor): boolean {
         if (this.ndim !== other.ndim) {
             return false;

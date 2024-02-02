@@ -15,10 +15,10 @@ class BogusAtom implements U {
     equals(other: U): boolean {
         throw new Error("Method not implemented.");
     }
-    isCons(): boolean {
+    iscons(): boolean {
         throw new Error("Method not implemented.");
     }
-    isNil(): boolean {
+    isnil(): boolean {
         throw new Error("Method not implemented.");
     }
     pos?: number;
