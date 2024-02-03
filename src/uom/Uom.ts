@@ -1,8 +1,6 @@
 import { U } from 'math-expression-tree';
 import { Atom } from '../atom/Atom';
 import { Dimensions } from './Dimensions';
-import { notImplemented } from './notImplemented';
-import { notSupported } from './notSupported';
 import { QQ } from './QQ';
 
 // const NAMES_SI = ['kilogram', 'meter', 'second', 'coulomb', 'kelvin', 'mole', 'candela'];
@@ -116,8 +114,6 @@ const dumbString = function (formatted: string, dimensions: Dimensions, labels: 
 };
 
 /**
- * 
- * @param multiplier 
  * @param formatted 
  * @param dimensions 
  * @param labels 
@@ -129,18 +125,18 @@ const unitString = function (formatted: string, dimensions: Dimensions, labels: 
     const L = dimensions.L;
     const T = dimensions.T;
     const Q = dimensions.Q;
-    const temperature = dimensions.temperature;
-    const amount = dimensions.amount;
-    const intensity = dimensions.intensity;
+    const K = dimensions.temperature;
+    const A = dimensions.amount;
+    const C = dimensions.intensity;
     for (let i = 0, len = patterns.length; i < len; i++) {
         const pattern = patterns[i];
         if (M.numer === pattern[0] && M.denom === pattern[1] &&
             L.numer === pattern[2] && L.denom === pattern[3] &&
             T.numer === pattern[4] && T.denom === pattern[5] &&
             Q.numer === pattern[6] && Q.denom === pattern[7] &&
-            temperature.numer === pattern[8] && temperature.denom === pattern[9] &&
-            amount.numer === pattern[10] && amount.denom === pattern[11] &&
-            intensity.numer === pattern[12] && intensity.denom === pattern[13]) {
+            K.numer === pattern[8] && K.denom === pattern[9] &&
+            A.numer === pattern[10] && A.denom === pattern[11] &&
+            C.numer === pattern[12] && C.denom === pattern[13]) {
             return decodes[i][0];
         }
     }
@@ -161,52 +157,47 @@ function div(lhs: Uom, rhs: Uom): Uom {
 export class Uom extends Atom {
 
     /**
-     *
-     */
-    public static ZERO = new Uom(Dimensions.ONE, SYMBOLS_SI);
-
-    /**
-     *
+     * dimensionless
      */
     public static ONE = new Uom(Dimensions.ONE, SYMBOLS_SI);
 
     /**
-     *
+     * kilogram
      */
     public static KILOGRAM = new Uom(Dimensions.MASS, SYMBOLS_SI);
 
     /**
-     *
+     * meter or metre
      */
     public static METER = new Uom(Dimensions.LENGTH, SYMBOLS_SI);
 
     /**
-     *
+     * second
      */
     public static SECOND = new Uom(Dimensions.TIME, SYMBOLS_SI);
 
     /**
-     *
+     * coulomb
      */
     public static COULOMB = new Uom(Dimensions.CHARGE, SYMBOLS_SI);
 
     /**
-     *
+     * ampere
      */
     public static AMPERE = new Uom(Dimensions.CURRENT, SYMBOLS_SI);
 
     /**
-     *
+     * kelvin
      */
     public static KELVIN = new Uom(Dimensions.TEMPERATURE, SYMBOLS_SI);
 
     /**
-     *
+     * mole
      */
     public static MOLE = new Uom(Dimensions.AMOUNT, SYMBOLS_SI);
 
     /**
-     *
+     * candela
      */
     public static CANDELA = new Uom(Dimensions.INTENSITY, SYMBOLS_SI);
 
@@ -242,24 +233,17 @@ export class Uom extends Atom {
         return false;
     }
 
-    /**
-     * @param rhs
-     * @returns
-     */
     mul(rhs: Uom): Uom {
         return mul(this, rhs);
     }
 
-    /**
-     * @param rhs
-     * @returns
-     */
     div(rhs: Uom): Uom {
         return div(this, rhs);
     }
 
     /**
      * Intentionaly undocumented.
+     * @hidden
      */
     pattern(): string {
         const ns: number[] = [];
@@ -280,85 +264,27 @@ export class Uom extends Atom {
         return JSON.stringify(ns);
     }
 
-    /**
-     * @param exponent
-     * @returns
-     */
     pow(exponent: QQ): Uom {
         return new Uom(this.dimensions.pow(exponent), this.labels);
     }
 
-    /**
-     * @returns
-     */
     inv(): Uom {
         return new Uom(this.dimensions.inv(), this.labels);
     }
 
     /**
-     * @returns true if this unit is dimensionless and the multiplier is unity.
+     * @returns true if this unit is dimensionless.
      */
     isOne(): boolean {
         return this.dimensions.isOne();
     }
 
-    /**
-     *
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    lerp(target: Uom, α: number): Uom {
-        throw new Error(notImplemented('lerp').message);
-    }
-
-    /**
-     * @returns
-     */
     quad(): Uom {
         return new Uom(this.dimensions.mul(this.dimensions), this.labels);
     }
 
-    /**
-     * @param n
-     * @returns
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    reflect(n: Uom): Uom {
-        return this;
-    }
-
-    /**
-     * @param rotor
-     * @returns
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    rotate(rotor: Uom): Uom {
-        return this;
-    }
-
-    /**
-     * @param target
-     * @param α
-     * @returns
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    slerp(target: Uom, α: number): Uom {
-        throw new Error(notImplemented('slerp').message);
-    }
-
-    /**
-     * @returns
-     */
     sqrt(): Uom {
         return new Uom(this.dimensions.sqrt(), this.labels);
-    }
-
-    /**
-     * @param σ
-     * @returns
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    stress(σ: Uom): Uom {
-        throw new Error(notSupported('stress').message);
     }
 
     /**
@@ -394,7 +320,6 @@ export class Uom extends Atom {
     /**
      * @param precision
      * @param compact Determines whether a multiplier of unity will be included in the result.
-     * @returns
      */
     toPrecision(precision?: number, compact?: boolean): string {
         return unitString(Number(1).toPrecision(precision), this.dimensions, this.labels, compact);
@@ -403,7 +328,6 @@ export class Uom extends Atom {
     /**
      * @param radix
      * @param compact Determines whether a multiplier of unity will be included in the result.
-     * @returns
      */
     override toString(radix?: number, compact?: boolean): string {
         return unitString(Number(1).toString(radix), this.dimensions, this.labels, compact);
@@ -411,7 +335,6 @@ export class Uom extends Atom {
 
     /**
      * @param uom
-     * @returns
      */
     static isOne(uom: Uom): boolean {
         if (uom === void 0) {
@@ -427,7 +350,6 @@ export class Uom extends Atom {
 
     /**
      * @param uom
-     * @returns
      */
     static assertDimensionless(uom: Uom): void {
         if (!Uom.isOne(uom)) {
@@ -438,7 +360,6 @@ export class Uom extends Atom {
     /**
      * @param lhs
      * @param rhs
-     * @returns
      */
     static compatible(lhs: Uom, rhs: Uom): Uom | undefined {
         if (lhs) {
