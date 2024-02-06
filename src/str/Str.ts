@@ -1,8 +1,6 @@
 import { U } from "math-expression-tree";
 import { Atom } from "../atom/Atom";
 
-const CLASSNAME = "JsString";
-
 export class Str extends Atom {
     /**
      * @param str The parsed representation of the string. i.e. Delimiters and escaping have been removed.
@@ -31,7 +29,9 @@ export class Str extends Atom {
         return JSON.stringify(this.str);
     }
     override toString(): string {
-        return `${CLASSNAME}(${JSON.stringify(this.str)})`;
+        // Normally we would return a string that reflects how this object was constructed.
+        // This implementation cause Str to behave more like a native JavaScript string.
+        return this.str;
     }
 }
 

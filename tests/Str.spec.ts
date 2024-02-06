@@ -79,7 +79,7 @@ test("equals", function () {
 test("toString", function () {
     const text = "Hello, World!";
     const s = new Str(text, 5, 23);
-    expect(s.toString()).toBe('JsString("Hello, World!")');
+    expect(s.toString()).toBe(text);
 });
 
 test("toInfixString", function () {
