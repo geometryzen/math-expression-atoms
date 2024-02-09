@@ -102,12 +102,7 @@ export class Sym extends Atom {
         return this.#namespace;
     }
     override toString(): string {
-        if (this.#namespace.length > 0) {
-            return `${this.name}(${JSON.stringify(this.#localName)}, ${JSON.stringify(this.#namespace)})`;
-        }
-        else {
-            return `${this.name}(${JSON.stringify(this.#localName)})`;
-        }
+        return this.key();
     }
 }
 

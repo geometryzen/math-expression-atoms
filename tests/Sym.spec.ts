@@ -8,7 +8,7 @@ test("Construction", function () {
     expect(sym.localName).toBe('foo');
     expect(sym.namespace).toBe('explicit-ns');
     expect(sym.key()).toBe('explicit-ns/foo');
-    expect(sym.toString()).toBe('Sym("foo", "explicit-ns")');
+    expect(sym.toString()).toBe("explicit-ns/foo");
     expect(sym.pos).toBe(pos);
     expect(sym.end).toBe(end);
 });
@@ -97,7 +97,7 @@ test("Backwards compatibility", function () {
     expect(sym.key()).toBe('foo');
     expect(sym.localName).toBe('foo');
     expect(sym.namespace).toBe('');
-    expect(sym.toString()).toBe('Sym("foo")');
+    expect(sym.toString()).toBe("foo");
 
     const a: Sym = create_sym('a', pos, end);
     const b: Sym = create_sym('b', pos, end);

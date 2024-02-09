@@ -6,6 +6,7 @@ export { assert_blade, create_algebra, is_blade } from './blade/createAlgebra';
 export { assert_boo, Boo, booF, booT, booU, create_boo, is_boo } from './boo/Boo';
 export { assert_cell, Cell, CellHost, is_cell } from './cell/Cell';
 export { assert_char, Char, is_char } from './char/Char';
+export { assert_err, Err, is_err } from './err/Err';
 export { assert_flt, create_flt, Flt, is_flt } from './flt/Flt';
 export { assert_jsfunction, is_jsfunction, JsFunction } from './function/JsFunction';
 export { assert_keyword, create_keyword, create_keyword_ns, is_keyword, Keyword } from './keyword/Keyword';
