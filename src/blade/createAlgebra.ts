@@ -260,6 +260,9 @@ export function create_blade<T extends U, K extends U>(bitmap: number, algebra: 
         get name(): string {
             return 'Blade';
         },
+        get type(): string {
+            return 'blade';
+        },
         add(rhs: BasisBlade<T, K>): K {
             return add(theBlade, rhs, algebra, metric, labels) as K;
         },

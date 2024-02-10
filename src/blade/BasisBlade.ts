@@ -1,4 +1,4 @@
-import { U } from 'math-expression-tree';
+import { Atom, U } from 'math-expression-tree';
 import { Adapter } from './Adapter';
 
 export interface Metric<T> {
@@ -34,7 +34,7 @@ export interface MaskAndWeight<T> {
 /**
  *
  */
-export interface BasisBlade<T, K> extends U {
+export interface BasisBlade<T, K> extends Atom {
     /**
      * The bitmap representation.
      */
