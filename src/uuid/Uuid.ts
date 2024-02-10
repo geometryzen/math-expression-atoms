@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class Uuid extends Atom {
+export class Uuid extends JsAtom {
     constructor(readonly str: string, pos?: number, end?: number) {
         super('Uuid', pos, end);
         if (typeof str !== 'string') {

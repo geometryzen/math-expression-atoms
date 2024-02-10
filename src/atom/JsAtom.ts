@@ -1,6 +1,9 @@
 import { U } from "math-expression-tree";
 
-export abstract class Atom implements U {
+/**
+ * THis is only a convenience for building atoms. There is no requirement for implementations to extend JsAtom to be considered atoms.
+ */
+export abstract class JsAtom implements U {
     constructor(public readonly name: string, public readonly pos?: number, public readonly end?: number) {
 
     }

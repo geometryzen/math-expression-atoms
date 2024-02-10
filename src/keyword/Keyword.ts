@@ -1,5 +1,5 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     if (str1 === str2) {
@@ -13,7 +13,7 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     }
 }
 
-export class Keyword extends Atom {
+export class Keyword extends JsAtom {
     constructor(readonly localName: string, readonly namespace: string, pos?: number, end?: number) {
         super("Keyword", pos, end);
     }

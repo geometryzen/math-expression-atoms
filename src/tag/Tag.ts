@@ -1,9 +1,9 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 const CLASSNAME = 'Tag';
 
-export class Tag extends Atom {
+export class Tag extends JsAtom {
     constructor(readonly tag: string, readonly value: U, pos?: number, end?: number) {
         super('Tag', pos, end);
         if (typeof tag !== 'string') {

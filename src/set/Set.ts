@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class Set extends Atom {
+export class Set extends JsAtom {
     /**
      * @param members
      * @param pos

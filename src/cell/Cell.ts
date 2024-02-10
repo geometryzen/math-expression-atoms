@@ -1,5 +1,5 @@
 import { nil, U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 export interface CellHost {
     reaction(expression: U, target: Cell): void;
@@ -7,7 +7,7 @@ export interface CellHost {
     deref(value: U, atom: Cell): void
 }
 
-export class Cell extends Atom {
+export class Cell extends JsAtom {
     #data: U = nil;
     #host: CellHost;
     #uuid: string;

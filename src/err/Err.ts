@@ -1,5 +1,5 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 /**
  * An Err is synonymous with undefined.
@@ -7,7 +7,7 @@ import { Atom } from "../atom/Atom";
  * An error that may be used as a return value. This MUST not be thrown.
  * Err may be considered to be synonymous with undefined.
  */
-export class Err extends Atom {
+export class Err extends JsAtom {
     #cause: U;
     constructor(cause: U, pos?: number, end?: number) {
         super("Err", pos, end);

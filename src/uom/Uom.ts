@@ -1,5 +1,5 @@
 import { U } from 'math-expression-tree';
-import { Atom } from '../atom/Atom';
+import { JsAtom } from '../atom/JsAtom';
 import { Dimensions } from './Dimensions';
 import { QQ } from './QQ';
 
@@ -154,7 +154,7 @@ function div(lhs: Uom, rhs: Uom): Uom {
 /**
  * The Uom class represents the units for a measure.
  */
-export class Uom extends Atom {
+export class Uom extends JsAtom {
 
     /**
      * dimensionless

@@ -1,5 +1,5 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 // TODO: Use the cache to intern common Flt values.
 const cache: Flt[] = [];
@@ -30,7 +30,7 @@ export function create_flt(value: number, pos?: number, end?: number): Flt {
     return new Flt(value, pos, end);
 }
 
-export class Flt extends Atom {
+export class Flt extends JsAtom {
     /**
      * Use the factory method instead. This may not exist in future.
      */

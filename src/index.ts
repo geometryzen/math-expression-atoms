@@ -1,4 +1,4 @@
-export { Atom } from './atom/Atom';
+export { JsAtom } from './atom/JsAtom';
 export { Adapter, SumTerm } from './blade/Adapter';
 export { Algebra, BasisBlade, MaskAndWeight, Metric } from './blade/BasisBlade';
 export { Blade } from './blade/Blade';
@@ -9,7 +9,10 @@ export { assert_char, Char, is_char } from './char/Char';
 export { assert_err, Err, is_err } from './err/Err';
 export { assert_flt, create_flt, Flt, is_flt } from './flt/Flt';
 export { assert_jsfunction, is_jsfunction, JsFunction } from './function/JsFunction';
+export { assert_hyp, create_hyp, delta, epsilon, Hyp, is_hyp } from './hyp/Hyp';
+export { Imu, imu, is_imu } from './imu/Imu';
 export { assert_keyword, create_keyword, create_keyword_ns, is_keyword, Keyword } from './keyword/Keyword';
+export { is_lambda, Lambda } from './lambda/Lambda';
 export { assert_map, is_map, Map } from './map/Map';
 export { assert_num, is_num, Num } from './num/Num';
 export { assert_jsobject, is_jsobject, JsObject } from './object/JsObject';

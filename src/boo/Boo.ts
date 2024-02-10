@@ -1,12 +1,12 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 const CLASSNAME = "Boo";
 
 /**
  * Fuzzy Logical Boolean.
  */
-export class Boo extends Atom {
+export class Boo extends JsAtom {
     constructor(private readonly b: boolean | undefined, pos?: number, end?: number) {
         super('boolean', pos, end);
     }

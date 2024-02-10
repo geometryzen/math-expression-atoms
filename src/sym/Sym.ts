@@ -1,5 +1,5 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     if (str1 === str2) {
@@ -21,7 +21,7 @@ export function create_sym_ns(localName: string, namespace: string, pos?: number
     return new Sym(localName, namespace, pos, end);
 }
 
-export class Sym extends Atom {
+export class Sym extends JsAtom {
     readonly #localName: string;
     readonly #namespace: string;
     /**

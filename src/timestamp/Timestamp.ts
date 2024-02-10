@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class Timestamp extends Atom {
+export class Timestamp extends JsAtom {
     #date: Date;
     constructor(readonly date: Date, pos?: number, end?: number) {
         super('Timestamp', pos, end);

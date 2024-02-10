@@ -1,6 +1,6 @@
 import { RBTree } from 'generic-rbtree';
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 import { bigInt, BigInteger } from '../rat/big-integer';
 
 //
@@ -99,7 +99,7 @@ function abs(a: BigInteger): BigInteger {
 /**
  * "God gave us the integers, all else is the work of man" - Kronecker.
  */
-export class Rat extends Atom {
+export class Rat extends JsAtom {
     /**
      * @param a The numerator.
      * @param b The denominator.

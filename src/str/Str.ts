@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class Str extends Atom {
+export class Str extends JsAtom {
     /**
      * @param str The parsed representation of the string. i.e. Delimiters and escaping have been removed.
      * @param pos The zero-based start position of the original text.

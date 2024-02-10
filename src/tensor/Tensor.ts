@@ -1,5 +1,5 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
 function equals_number_arrays(arrL: number[], arrR: number[]): boolean {
     if (arrL.length === arrR.length) {
@@ -35,7 +35,7 @@ function equals_U_arrays(arrL: U[], arrR: U[]): boolean {
  * the elements of the tensor are stored in a flattened manner. Presumambly,
  * this makes things easier in the case when a Tensor is used as a square matrix.
  */
-export class Tensor<T extends U = U> extends Atom {
+export class Tensor<T extends U = U> extends JsAtom {
     readonly #dims: number[];
     readonly #elems: T[];
     /**

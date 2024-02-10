@@ -1,7 +1,7 @@
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class JsObject extends Atom {
+export class JsObject extends JsAtom {
     #obj: object;
     constructor(obj: object) {
         super("object");

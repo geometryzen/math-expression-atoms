@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { U } from "math-expression-tree";
-import { Atom } from "../atom/Atom";
+import { JsAtom } from "../atom/JsAtom";
 
-export class JsFunction extends Atom {
+export class JsFunction extends JsAtom {
     #fn: Function;
     constructor(fn: Function) {
         super("function");
