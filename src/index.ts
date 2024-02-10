@@ -3,6 +3,7 @@ export { Adapter, SumTerm } from './blade/Adapter';
 export { Algebra, BasisBlade, MaskAndWeight, Metric } from './blade/BasisBlade';
 export { Blade } from './blade/Blade';
 export { assert_blade, create_algebra, is_blade } from './blade/createAlgebra';
+export { et, ex, ey, ez } from './blade/spacetime';
 export { assert_boo, Boo, booF, booT, booU, create_boo, is_boo } from './boo/Boo';
 export { assert_cell, Cell, CellHost, is_cell } from './cell/Cell';
 export { assert_char, Char, is_char } from './char/Char';
