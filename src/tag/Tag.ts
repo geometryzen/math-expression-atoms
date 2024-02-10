@@ -4,6 +4,7 @@ import { JsAtom } from "../atom/JsAtom";
 const CLASSNAME = 'Tag';
 
 export class Tag extends JsAtom {
+    readonly type = 'tag';
     constructor(readonly tag: string, readonly value: U, pos?: number, end?: number) {
         super('Tag', pos, end);
         if (typeof tag !== 'string') {

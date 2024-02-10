@@ -3,6 +3,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Lambda extends JsAtom {
+    readonly type = 'lambda';
     readonly #hash: string;
     readonly #body: LambdaExpr;
     constructor(body: LambdaExpr, hash: string, pos?: number, end?: number) {

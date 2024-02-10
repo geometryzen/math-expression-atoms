@@ -155,7 +155,7 @@ function div(lhs: Uom, rhs: Uom): Uom {
  * The Uom class represents the units for a measure.
  */
 export class Uom extends JsAtom {
-
+    readonly type = 'uom';
     /**
      * dimensionless
      */

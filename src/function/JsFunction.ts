@@ -3,6 +3,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class JsFunction extends JsAtom {
+    readonly type = 'function';
     #fn: Function;
     constructor(fn: Function) {
         super("function");

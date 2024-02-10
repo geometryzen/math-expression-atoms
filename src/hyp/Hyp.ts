@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Hyp extends JsAtom {
+    readonly type = 'hyperreal';
     constructor(public readonly printname: string, pos?: number, end?: number) {
         super('Hyp', pos, end);
     }

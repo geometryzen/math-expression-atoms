@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Timestamp extends JsAtom {
+    readonly type = 'timestamp';
     #date: Date;
     constructor(readonly date: Date, pos?: number, end?: number) {
         super('Timestamp', pos, end);

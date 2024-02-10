@@ -7,6 +7,7 @@ const CLASSNAME = "Boo";
  * Fuzzy Logical Boolean.
  */
 export class Boo extends JsAtom {
+    readonly type = 'boolean';
     constructor(private readonly b: boolean | undefined, pos?: number, end?: number) {
         super('boolean', pos, end);
     }

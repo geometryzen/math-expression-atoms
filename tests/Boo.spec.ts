@@ -1,7 +1,8 @@
-import { U } from "math-expression-tree";
+import { Atom, is_atom, U } from "math-expression-tree";
 import { assert_boo, Boo, booF, booT, booU, create_boo, is_boo } from "../src/index";
 
-class BogusAtom implements U {
+class BogusAtom implements Atom {
+    readonly type = 'bogus';
     addRef(): void {
     }
     release(): void {
@@ -27,6 +28,7 @@ class BogusAtom implements U {
 
 test("ceate_boo", function () {
     expect(create_boo(true)).toBe(booT);
+    expect(is_atom(create_boo(true))).toBe(true);
 });
 test("Boo.equals(other:U): boolean", function () {
     const bogus = new BogusAtom();

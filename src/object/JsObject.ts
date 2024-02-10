@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class JsObject extends JsAtom {
+    readonly type = 'object';
     #obj: object;
     constructor(obj: object) {
         super("object");

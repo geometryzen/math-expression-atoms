@@ -8,6 +8,7 @@ import { JsAtom } from "../atom/JsAtom";
  * Err may be considered to be synonymous with undefined.
  */
 export class Err extends JsAtom {
+    readonly type = 'error';
     #cause: U;
     constructor(cause: U, pos?: number, end?: number) {
         super("Err", pos, end);

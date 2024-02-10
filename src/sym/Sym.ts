@@ -22,6 +22,7 @@ export function create_sym_ns(localName: string, namespace: string, pos?: number
 }
 
 export class Sym extends JsAtom {
+    readonly type = 'symbol';
     readonly #localName: string;
     readonly #namespace: string;
     /**

@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Char extends JsAtom {
+    readonly type = 'char';
     constructor(readonly ch: string, pos?: number, end?: number) {
         super('Char', pos, end);
         if (typeof ch !== 'string') {

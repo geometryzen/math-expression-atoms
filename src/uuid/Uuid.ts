@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Uuid extends JsAtom {
+    readonly type = 'uuid';
     constructor(readonly str: string, pos?: number, end?: number) {
         super('Uuid', pos, end);
         if (typeof str !== 'string') {

@@ -5,11 +5,9 @@ import { JsAtom } from "../atom/JsAtom";
  * The implementation of the imaginary unit.
  */
 export class Imu extends JsAtom {
+    readonly type = 'imu';
     constructor(pos?: number, end?: number) {
         super('Imu', pos, end);
-    }
-    get type(): string {
-        return 'imu';
     }
     override equals(other: U): boolean {
         if (this === other) {

@@ -36,6 +36,7 @@ function equals_U_arrays(arrL: U[], arrR: U[]): boolean {
  * this makes things easier in the case when a Tensor is used as a square matrix.
  */
 export class Tensor<T extends U = U> extends JsAtom {
+    readonly type = 'tensor';
     readonly #dims: number[];
     readonly #elems: T[];
     /**

@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Str extends JsAtom {
+    readonly type = 'string';
     /**
      * @param str The parsed representation of the string. i.e. Delimiters and escaping have been removed.
      * @param pos The zero-based start position of the original text.
@@ -47,6 +48,10 @@ export function assert_str(expr: U): Str {
         // Don't need anything fancy here because this is an assertion for dev eyes only.
         throw new Error(`Expecting a Str but got expression ${expr}.`);
     }
+}
+
+export function create_str(str: string, pos?: number, end?: number): U {
+    return new Str(str, pos, end);
 }
 
 export const emptyStr = new Str('');

@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Map extends JsAtom {
+    readonly type = 'map';
     /**
      * @param entries
      * @param pos

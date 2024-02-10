@@ -19,7 +19,7 @@ export { assert_jsobject, is_jsobject, JsObject } from './object/JsObject';
 export { bigInt, BigInteger, gcd } from './rat/big-integer';
 export { assert_rat, create_int, create_rat, is_rat, negOne, one, Rat, zero } from './rat/Rat';
 export { assert_set, is_set, Set } from './set/Set';
-export { assert_str, emptyStr, is_str, Str as JsString, Str } from './str/Str';
+export { assert_str, create_str, emptyStr, is_str, Str as JsString, Str } from './str/Str';
 export { assert_sym, create_sym, create_sym_ns, is_sym, Sym } from './sym/Sym';
 export { assert_tag, is_tag, Tag } from './tag/Tag';
 export { create_tensor } from './tensor/create_tensor';

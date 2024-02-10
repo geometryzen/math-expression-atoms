@@ -2,6 +2,7 @@ import { U } from "math-expression-tree";
 import { JsAtom } from "../atom/JsAtom";
 
 export class Set extends JsAtom {
+    readonly type = 'set';
     /**
      * @param members
      * @param pos

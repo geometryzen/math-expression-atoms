@@ -8,6 +8,7 @@ export interface CellHost {
 }
 
 export class Cell extends JsAtom {
+    readonly type = 'cell';
     #data: U = nil;
     #host: CellHost;
     #uuid: string;

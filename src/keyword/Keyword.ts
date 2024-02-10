@@ -14,6 +14,7 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
 }
 
 export class Keyword extends JsAtom {
+    readonly type = 'keyword';
     constructor(readonly localName: string, readonly namespace: string, pos?: number, end?: number) {
         super("Keyword", pos, end);
     }

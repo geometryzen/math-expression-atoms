@@ -100,6 +100,7 @@ function abs(a: BigInteger): BigInteger {
  * "God gave us the integers, all else is the work of man" - Kronecker.
  */
 export class Rat extends JsAtom {
+    readonly type = 'rational';
     /**
      * @param a The numerator.
      * @param b The denominator.

@@ -31,6 +31,7 @@ export function create_flt(value: number, pos?: number, end?: number): Flt {
 }
 
 export class Flt extends JsAtom {
+    readonly type = 'number';
     /**
      * Use the factory method instead. This may not exist in future.
      */
