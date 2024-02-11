@@ -189,6 +189,9 @@ export class Rat extends JsAtom {
     isDenom(n: number): boolean {
         return this.b.equals(n);
     }
+    isEven(): boolean {
+        return this.isInteger() && this.a.isEven();
+    }
     /**
      * Convenience method for !Rat.isInteger()
      */
@@ -224,6 +227,9 @@ export class Rat extends JsAtom {
     }
     isMinusOne(): boolean {
         return this.isIntegerNumber(-1);
+    }
+    isOdd(): boolean {
+        return this.isInteger() && this.a.isOdd();
     }
     isOne(): boolean {
         return this.isIntegerNumber(1);
