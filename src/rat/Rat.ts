@@ -291,10 +291,10 @@ export class Rat extends JsAtom {
         const numerString = this.a.toString();
         if (this.isFraction()) {
             const denomString = this.b.toString();
-            return `${this.name}(${numerString},${denomString})`;
+            return `${numerString}/${denomString}`;
         }
         else {
-            return `${this.name}(${numerString})`;
+            return numerString;
         }
     }
 }

@@ -21,3 +21,7 @@ test("isOdd", function () {
     expect(create_int(-2).isOdd()).toBe(false);
     expect(create_rat(1, 2).isOdd()).toBe(false);
 });
+test("toString", function () {
+    expect(create_int(2).toString()).toBe("2");
+    expect(create_rat(1, 2).toString()).toBe("1/2");
+});

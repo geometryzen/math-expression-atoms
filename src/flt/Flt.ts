@@ -70,8 +70,14 @@ export class Flt extends JsAtom {
     inv(): Flt {
         return new Flt(1 / this.d, this.pos, this.end);
     }
+    isFinite(): boolean {
+        return Number.isFinite(this.d);
+    }
     isInteger(): boolean {
-        return this.d === Math.round(this.d);
+        return Number.isInteger(this.d);
+    }
+    isNaN(): boolean {
+        return Number.isNaN(this.d);
     }
     /**
      * Returns true if this number is less than zero.
@@ -87,6 +93,9 @@ export class Flt extends JsAtom {
     }
     isPositive(): boolean {
         return this.d > 0;
+    }
+    isSafeInteger(): boolean {
+        return Number.isSafeInteger(this.d);
     }
     isZero(): boolean {
         return this.d === 0;
@@ -110,7 +119,7 @@ export class Flt extends JsAtom {
         return this.d;
     }
     override toString(): string {
-        return `${this.name}(${this.d})`;
+        return this.d.toPrecision(4);
     }
 }
 
