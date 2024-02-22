@@ -7,9 +7,15 @@ import { BasisBlade } from "./BasisBlade";
 import { create_algebra, is_blade } from "./createAlgebra";
 
 class Field implements Adapter<U, U> {
-    ε: U;
-    one: U;
-    zero: U;
+    get ε(): U {
+        throw new Error("Method not implemented.");
+    }
+    get one(): U {
+        throw new Error("Method not implemented.");
+    }
+    get zero(): U {
+        throw new Error("Method not implemented.");
+    }
     abs(arg: U): U {
         throw new Error("Method not implemented.");
     }

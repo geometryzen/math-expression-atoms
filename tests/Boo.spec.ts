@@ -7,7 +7,9 @@ class BogusAtom implements Atom {
     }
     release(): void {
     }
-    name: string;
+    get name(): string {
+        throw new Error("Method not implemented.");
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     contains(needle: U): boolean {
         throw new Error("Method not implemented.");

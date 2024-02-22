@@ -13,25 +13,39 @@ function strcmp(str1: string, str2: string): 0 | 1 | -1 {
     }
 }
 
-export function create_sym(localName: string, pos?: number, end?: number): Sym {
-    return create_sym_ns(localName, "", pos, end);
+export function create_sym(localName: string, pos?: number, end?: number, id?: number): Sym {
+    return create_sym_ns(localName, "", pos, end, id);
 }
 
-export function create_sym_ns(localName: string, namespace: string, pos?: number, end?: number): Sym {
-    return new Sym(localName, namespace, pos, end);
+export function create_sym_ns(localName: string, namespace: string, pos?: number, end?: number, id?: number): Sym {
+    return new Sym(localName, namespace, pos, end, id);
+}
+
+function id_must_be_number_or_undefined(x: number | undefined): number | undefined | never {
+    if (typeof x === 'number') {
+        return x;
+    }
+    else if (typeof x === 'undefined') {
+        return x;
+    }
+    else {
+        throw new Error("id must be number or undefined.");
+    }
 }
 
 export class Sym extends JsAtom {
     readonly type = 'symbol';
     readonly #localName: string;
     readonly #namespace: string;
+    readonly #id: number | undefined;
     /**
      * Use create_sym_ns or create_sym to create a new Sym instance.
      */
-    constructor(localName: string, namespace: string, readonly pos?: number, readonly end?: number) {
+    constructor(localName: string, namespace: string, readonly pos?: number, readonly end?: number, id?: number) {
         super('Sym', pos, end);
         this.#localName = localName;
         this.#namespace = namespace;
+        this.#id = id_must_be_number_or_undefined(id);
     }
     compare(other: Sym): 1 | -1 | 0 {
         const x = strcmp(this.#namespace, other.#namespace);
@@ -95,6 +109,9 @@ export class Sym extends JsAtom {
         else {
             return this.#localName;
         }
+    }
+    get id(): number | undefined {
+        return this.#id;
     }
     get localName(): string {
         return this.#localName;

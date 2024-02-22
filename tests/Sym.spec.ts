@@ -4,13 +4,20 @@ import { assert_sym, create_sym, create_sym_ns, is_sym, Sym } from "../src/sym/S
 test("Construction", function () {
     const pos = 5;
     const end = 10;
-    const sym: Sym = create_sym_ns('foo', 'explicit-ns', pos, end);
+    const id = 23;
+    const sym: Sym = create_sym_ns('foo', 'explicit-ns', pos, end, id);
     expect(sym.localName).toBe('foo');
     expect(sym.namespace).toBe('explicit-ns');
+    expect(typeof sym.id).toBe('number');
+    expect(sym.id).toBe(id);
     expect(sym.key()).toBe('explicit-ns/foo');
     expect(sym.toString()).toBe("explicit-ns/foo");
     expect(sym.pos).toBe(pos);
     expect(sym.end).toBe(end);
+    expect(create_sym('', void 0, void 0, id).id).toBe(id);
+    expect(create_sym_ns('', '', void 0, void 0, id).id).toBe(id);
+    expect(typeof create_sym('', void 0, void 0, void 0).id).toBe('undefined');
+    expect(typeof create_sym_ns('', '', void 0, void 0, void 0).id).toBe('undefined');
 });
 test("Sym.equals(other: U): boolean", function () {
     const a1: Sym = create_sym_ns('a', 'ns-1');
