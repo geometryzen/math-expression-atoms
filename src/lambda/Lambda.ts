@@ -29,7 +29,7 @@ export class Lambda extends JsAtom {
         }
     }
     override toString(): string {
-        return '(lambda ...)';
+        return `Lambda(${this.#body})`;
     }
 }
 
