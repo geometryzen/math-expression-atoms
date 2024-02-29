@@ -1,5 +1,5 @@
-import { U } from "math-expression-tree";
-import { JsAtom } from "../atom/JsAtom";
+import { Atom, is_atom, U } from "math-expression-tree";
+import { is_str } from "../str/Str";
 
 /**
  * An Err is synonymous with undefined.
@@ -7,17 +7,66 @@ import { JsAtom } from "../atom/JsAtom";
  * An error that may be used as a return value. This MUST not be thrown.
  * Err may be considered to be synonymous with undefined.
  */
-export class Err extends JsAtom {
+export class Err extends Error implements Atom {
     readonly type = 'error';
-    #cause: U;
-    constructor(cause: U, pos?: number, end?: number) {
-        super("Err", pos, end);
+    #message: U;
+    #cause: Err | undefined;
+    #pos: number | undefined;
+    #end: number | undefined;
+    #refCount = 1;
+    constructor(message: U, cause?: Err, pos?: number, end?: number) {
+        super(best_effort_message(message), cause);
+        this.name = "Err";
+        this.#message = message;
+        this.#message.addRef();
         this.#cause = cause;
+        if (cause) {
+            cause.addRef();
+        }
+        this.#pos = pos;
+        this.#end = end;
     }
-    get cause(): U {
-        return this.#cause;
+    contains(needle: U): boolean {
+        return this.equals(needle);
     }
-    override equals(other: U): boolean {
+    get originalMessage(): U {
+        this.#message.addRef();
+        return this.#message;
+    }
+    get originalCause(): Err | undefined {
+        if (this.#cause) {
+            this.#cause.addRef();
+            return this.#cause;
+        }
+        else {
+            return void 0;
+        }
+    }
+    get pos(): number | undefined {
+        return this.#pos;
+    }
+    get end(): number | undefined {
+        return this.#end;
+    }
+    addRef(): void {
+        this.#refCount++;
+    }
+    release(): void {
+        this.#refCount--;
+        if (this.#refCount === 0) {
+            this.#message.release();
+            if (this.#cause) {
+                this.#cause.release();
+            }
+        }
+    }
+    get iscons(): false {
+        return false;
+    }
+    get isnil(): false {
+        return false;
+    }
+    equals(other: U): boolean {
         if (this === other) {
             return true;
         }
@@ -29,10 +78,10 @@ export class Err extends JsAtom {
         }
     }
     equalsErr(other: Err): boolean {
-        return this.cause.equals(other.cause);
+        return this.#message.equals(other.#message);
     }
     override toString(): string {
-        return `Err(${this.#cause.toString()})`;
+        return `Err(${this.#message.toString()})`;
     }
     toInfixString(): string {
         throw new Error();
@@ -58,5 +107,26 @@ export function assert_err(expr: U, context?: string, argName?: string): Err {
         else {
             throw new Error("Expecting Err");
         }
+    }
+}
+
+export function create_err(message: U, cause?: Err, pos?: number, end?: number): Err {
+    return new Err(message, cause, pos, end);
+}
+
+/**
+ * @returns a string representation of the message parameter.
+ */
+function best_effort_message(message: U): string {
+    if (is_atom(message)) {
+        if (is_str(message)) {
+            return message.str;
+        }
+        else {
+            return "";
+        }
+    }
+    else {
+        return "";
     }
 }

@@ -7,7 +7,7 @@ export { et, ex, ey, ez } from './blade/spacetime';
 export { assert_boo, Boo, booF, booT, booU, create_boo, is_boo } from './boo/Boo';
 export { assert_cell, Cell, CellHost, is_cell } from './cell/Cell';
 export { assert_char, Char, is_char } from './char/Char';
-export { assert_err, Err, is_err } from './err/Err';
+export { assert_err, create_err, Err, is_err } from './err/Err';
 export { assert_flt, create_flt, Flt, is_flt } from './flt/Flt';
 export { assert_jsfunction, is_jsfunction, JsFunction } from './function/JsFunction';
 export { assert_hyp, create_hyp, delta, epsilon, Hyp, is_hyp } from './hyp/Hyp';
